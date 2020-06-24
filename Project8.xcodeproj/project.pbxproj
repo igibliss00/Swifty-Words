@@ -14,6 +14,8 @@
 		490CAEA824A397E200A252FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490CAEA724A397E200A252FD /* Assets.xcassets */; };
 		490CAEAB24A397E200A252FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490CAEA924A397E200A252FD /* LaunchScreen.storyboard */; };
 		490CAEB324A39A7300A252FD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 490CAEB224A39A7300A252FD /* README.md */; };
+		490CAEB624A3F32D00A252FD /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 490CAEB424A3F32D00A252FD /* level1.txt */; };
+		490CAEB724A3F32D00A252FD /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 490CAEB524A3F32D00A252FD /* level2.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		490CAEAA24A397E200A252FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		490CAEAC24A397E200A252FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		490CAEB224A39A7300A252FD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		490CAEB424A3F32D00A252FD /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		490CAEB524A3F32D00A252FD /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				490CAEA024A397DD00A252FD /* SceneDelegate.swift */,
 				490CAEA224A397DD00A252FD /* ViewController.swift */,
 				490CAEA424A397DD00A252FD /* Main.storyboard */,
+				490CAEB424A3F32D00A252FD /* level1.txt */,
+				490CAEB524A3F32D00A252FD /* level2.txt */,
 				490CAEA724A397E200A252FD /* Assets.xcassets */,
 				490CAEA924A397E200A252FD /* LaunchScreen.storyboard */,
 				490CAEAC24A397E200A252FD /* Info.plist */,
@@ -128,7 +134,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490CAEB624A3F32D00A252FD /* level1.txt in Resources */,
 				490CAEAB24A397E200A252FD /* LaunchScreen.storyboard in Resources */,
+				490CAEB724A3F32D00A252FD /* level2.txt in Resources */,
 				490CAEA824A397E200A252FD /* Assets.xcassets in Resources */,
 				490CAEB324A39A7300A252FD /* README.md in Resources */,
 				490CAEA624A397DD00A252FD /* Main.storyboard in Resources */,
