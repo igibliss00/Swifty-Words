@@ -1,10 +1,6 @@
 # Swifty Words
 
-## Installing
-
-```
-git alone
-```
+An iOS app to demonstrate the programmatic ways of Auto Layout, including NSLayoutConstraint and NSLayoutAnchor.
 
 ## Features
 
@@ -12,46 +8,51 @@ git alone
 
 loadView() is a method to be called by the viewController.  This method is invoked when the current view is nil and want to create the UI elements programmatically.  It's to be employed when you're not creating the UI elements in the storyboard.  In fact, if you're using the Interface Building to create your UI elements, this method is not be overridden, but the viewDidLoad() method to be used, instead.
 
-### Anchors
+### Layout Constraints
+
+Three ways of defining the Auto Layout constraints:
+1. Using the Interface Builder:
+
+Interface Builder has a number of ways to construct the Auto Layout constraints. It includes using the suggested constraints, adding individual constraints manually or using the Horizontal/Vertical Stack Views. 
+
+2. Using NSLayoutConstraint:
+This is the most verbose way of applying constraints. 
 
 ```
-NSLayoutConstraint.activate([
-    scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-    scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-    cluesLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
-    cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 100),
-    cluesLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6, constant: -100),
-    answersLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
-    answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
-    answersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.40, constant: -100),
-    answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor),
-    currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-    currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.50),
-    currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20),
-    submit.topAnchor.constraint(equalTo: currentAnswer.bottomAnchor),
-    submit.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
-    submit.heightAnchor.constraint(equalToConstant: 44),
-    clear.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
-    clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
-    clear.heightAnchor.constraint(equalToConstant: 44),
-    buttonsView.widthAnchor.constraint(equalToConstant: 750),
-    buttonsView.heightAnchor.constraint(equalToConstant: 320),
-    buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-    buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 200),
-    buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20),
-])
+NSLayoutConstraint(item: subview,
+                   attribute: .leading,
+                   relatedBy: .equal,
+                   toItem: view,
+                   attribute: .leadingMargin,
+                   multiplier: 1.0,
+                   constant: 0.0).isActive = true
 ```
+
+3. Using NSLayoutAnchor:
+
+There are two ways of applying NSLayoutAnchor. The first is by setting the isActive property to true:
+```
+subview.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+```
+This methods makes toggling the constraint on and off dynamically easy.
+
+Second is to use the the NSLayoutConstraint’s activate API:
+```
+let constraint = subview.leadingAnchor.constraint(equalTo: margins.leadingAnchor)
+NSLayoutConstraint.activate([constraint])
+```
+
+If we were to apply the constraints programmatically, it’s important to set the translatesAutoresizingMaskIntoConstraints
+ property to false.  translatesAutoresizingMaskIntoConstraints is a Boolean value that determines whether the view’s autoresizing mask gets translated to Auto Layout constraints. 
 
 ### Priority
 
 - Content hugging priority determines how likely this view is to be made larger than its intrinsic content size. If this priority is high it means Auto Layout prefers not to stretch it; if it’s low, it will be more likely to be stretched.
 - Content compression resistance priority determines how happy we are for this view to be made smaller than its intrinsic content size.
 
-1.png
-
 ```
 cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
 answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
 ```
 
-2.png
+
